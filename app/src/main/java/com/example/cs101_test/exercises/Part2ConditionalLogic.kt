@@ -5,13 +5,17 @@ object Part2ConditionalLogic {
     // Create a function that takes an integer as a parameter and returns "Positive", "Negative", or "Zero".
     fun checkNumber(number: Int): String {
         // Your code here
-        return ""
+        return when {
+            number > 0 -> "Positive"
+            number < 0 -> "Negative"
+            else -> "Zero"
+        }
     }
 
     // ---------------------- EXERCISE 2
     // Create a function that takes a string and prints each character on a new line.
     fun printChars(input: String) {
-        // Your code here
+        input.forEach { println(it) }
     }
 
     // ---------------------- EXERCISE 3
@@ -19,7 +23,7 @@ object Part2ConditionalLogic {
     // For example if input is 45 then output should be 9 (4+5)
     fun sumDigits(number: Int): Int {
         // Your code here
-        return 0
+        return number.toString().sumOf { it.digitToInt() }
     }
 
     // ---------------------- EXERCISE 4
@@ -27,21 +31,23 @@ object Part2ConditionalLogic {
     // For example if input is (1,2,3,4,5) then output should be (1,3,5)
     fun filterOddNumbers(numbers: List<Int>): List<Int> {
         // Your code here
-        return listOf()
+        return numbers.filter { it % 2 != 0 }
     }
 
     // ---------------------- EXERCISE 5
     // Create a function that takes a list of strings and returns a new list with all strings in lowercase.
     fun transformToLowercase(strings: List<String>): List<String> {
         // Your code here
-        return listOf()
+        return strings.map { it.lowercase() }
     }
 
     // ---------------------- EXERCISE 6
     // Create a function that prints numbers from 1 to 10 with println(), but skips multiples of 3 using a loop.
     // Expected output: "1", "2", "4", "5", "7", "8", "10"
     fun printNumbersSkipMultiplesOf3() {
-        // Your code here
+        for (i in 1..10) {
+            if (i % 3 != 0) println(i)
+        }
     }
 
     // ---------------------- EXERCISE 7
@@ -56,9 +62,9 @@ object Part2ConditionalLogic {
     // ---------------------- EXERCISE 8
     // Modify the function to have default values for both width and height and to return the area of the rectangle.
     // Example of a function with a default value "world": fun greet(name: String = "world") {}
-    fun calculateArea(width: Int, height: Int): Int {
+    fun calculateArea(width: Int = 1, height: Int = 1): Int {
         // Your code here
-        return 0
+        return width * height
     }
 
     // ---------------------- EXERCISE 9
@@ -67,7 +73,11 @@ object Part2ConditionalLogic {
     // Acceptable days: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
     // If the day does not exist, return "Invalid day".
     fun dayType(day: String): String {
-        return ""
+        return when (day.lowercase()) {
+            "monday", "tuesday", "wednesday", "thursday", "friday" -> "Weekday"
+            "saturday", "sunday" -> "Weekend"
+            else -> "Invalid day"
+        }
     }
 
     // ---------------------- EXERCISE 10
@@ -77,7 +87,7 @@ object Part2ConditionalLogic {
     //      If dividing the year by 100 result in a whole number, it must also result in a whole number when dividing by 400
     // Examples: 2024 is a leap year, and 2023 is not
     fun isLeapYear(year: Int): Boolean {
-        return false
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)
     }
 
     // ---------------------- EXERCISE 11
